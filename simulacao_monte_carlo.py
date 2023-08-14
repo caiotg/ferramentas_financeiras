@@ -85,8 +85,6 @@ if __name__ == '__main__':
     # plt.savefig('ferramentas_financeiras/grafico_linhas_simulacao_monte_carlo')
     # plt.show()
 
-
-
     print(f'''Ao investir R$ 1000,00 na carteira {ativos}, 
     podemos esperar esses resultados para os próximo ano, 
     utilizando o método de Monte Carlo com 10 mil simulações:

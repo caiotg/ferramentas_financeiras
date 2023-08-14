@@ -40,13 +40,6 @@ class calculadoraRentabilidade():
 
         dfRentabilidades = pd.DataFrame()
         
-        for ativo in self.retornosEmpresasAcum.columns:
-
-            dfRentabilidades[f'retorno_{ativo}'] = self.retornosEmpresasAcum[f'{ativo}'] * peso
-        
-
-        print(dfRentabilidades)
-
 
 
 if __name__ == '__main__':
@@ -57,6 +50,6 @@ if __name__ == '__main__':
 
     carteira = calculadoraRentabilidade(ativos, inicio, capital)
 
-    carteira.pegando_dados()
-    carteira.calculando_retornos(frequencia= 'M')
-    carteira.calculando_rentabilidade()
+    # carteira.pegando_dados()
+    # carteira.calculando_retornos(frequencia= 'M')
+    # carteira.calculando_rentabilidade()
