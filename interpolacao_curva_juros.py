@@ -79,16 +79,22 @@ class interpolacao_curva_juros():
 
         diaAtual = dt.datetime(self.ano, self.mes, self.dia)
 
+        dadosFeriados = r'C:\Users\Caio\Documents\dev\github\ferramentas_financeiras\feriados_nacionais.xls'
+
+        datas = pd.read_excel(dadosFeriados, skipfooter= 9)['Data']
+
+        feriados = CustomBusinessDay(holidays= datas)
+
         for data in self.tabela.index:
 
-            diasUteis = len(pd.date_range(diaAtual, data, freq= BDay()))
+            diasUteis = len(pd.date_range(diaAtual, data, freq= feriados))
             curvaDiasUteis.append(diasUteis)
 
         taxas = self.tabela.values
         
         self.taxas = list(taxas)
         self.curvaDiasUteis = curvaDiasUteis
-        self.diasUteisDaquiParaData = len(pd.date_range(diaAtual, dt.datetime(ano, mes, dia), freq= BDay()))
+        self.diasUteisDaquiParaData = len(pd.date_range(diaAtual, dt.datetime(ano, mes, dia), freq= feriados))
 
     def fazendo_interpolacao(self):
 
